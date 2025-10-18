@@ -1,0 +1,28 @@
+# 扔掉第三方库示例
+Adafruit_CircuitPython_ST7789/
+
+# 扔掉大模型的记忆文件
+QWEN.md
+CLAUDE.md
+
+# 扔掉 Python 相关缓存
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pdb
+*.egg-info/
+.ipynb_checkpoints/
+
+# 扔掉操作系统拉的屎
+.DS_Store
+
+# 扔掉归档打包文件
+*.gz
+*.tar
+*.zip
+*.rar
+
+# 扔掉笔记文件
+.docs/
+
