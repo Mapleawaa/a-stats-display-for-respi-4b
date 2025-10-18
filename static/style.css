@@ -1,0 +1,223 @@
+/* 自定义样式 - 树莓派显示屏控制器 */
+
+/* 按钮通用样式 */
+.control-btn {
+    @apply px-6 py-3 rounded-lg font-medium transition-all duration-200 transform;
+    @apply active:scale-95 shadow-lg hover:shadow-xl;
+}
+
+/* 滚动条样式 */
+#log-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+#log-container::-webkit-scrollbar-track {
+    background: #374151;
+    border-radius: 3px;
+}
+
+#log-container::-webkit-scrollbar-thumb {
+    background: #6b7280;
+    border-radius: 3px;
+}
+
+#log-container::-webkit-scrollbar-thumb:hover {
+    background: #9ca3af;
+}
+
+/* 日志条目样式 */
+.log-entry {
+    padding: 8px 12px;
+    border-left: 3px solid transparent;
+    border-radius: 4px;
+    margin-bottom: 4px;
+    transition: all 0.2s;
+}
+
+.log-entry.success {
+    background-color: rgba(34, 197, 94, 0.1);
+    border-left-color: #22c55e;
+}
+
+.log-entry.error {
+    background-color: rgba(239, 68, 68, 0.1);
+    border-left-color: #ef4444;
+}
+
+.log-entry.info {
+    background-color: rgba(59, 130, 246, 0.1);
+    border-left-color: #3b82f6;
+}
+
+.log-entry.warning {
+    background-color: rgba(245, 158, 11, 0.1);
+    border-left-color: #f59e0b;
+}
+
+/* 输入框聚焦动画 */
+input:focus, textarea:focus, select:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+}
+
+/* 加载动画 */
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.animate-spin {
+    animation: spin 1s linear infinite;
+}
+
+/* 脉冲动画 */
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.animate-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* 卡片悬停效果 */
+.bg-gray-800 {
+    transition: all 0.3s ease;
+}
+
+.bg-gray-800:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* 亮度滑块自定义样式 */
+#brightness-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    background: linear-gradient(to right, #1f2937, #fbbf24);
+}
+
+#brightness-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #fbbf24;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+#brightness-slider::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+    box-shadow: 0 0 10px rgba(251, 191, 36, 0.5);
+}
+
+#brightness-slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #fbbf24;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s;
+}
+
+#brightness-slider::-moz-range-thumb:hover {
+    transform: scale(1.2);
+    box-shadow: 0 0 10px rgba(251, 191, 36, 0.5);
+}
+
+/* 图片预览样式 */
+#preview-img {
+    max-height: 300px;
+    object-fit: contain;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .control-btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.875rem;
+    }
+
+    h1 {
+        font-size: 1.875rem;
+    }
+
+    h2 {
+        font-size: 1.25rem;
+    }
+}
+
+/* 状态指示器动画 */
+.status-indicator {
+    position: relative;
+}
+
+.status-indicator::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: inherit;
+    animation: ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@keyframes ping {
+    75%, 100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+/* 平滑过渡 */
+* {
+    transition-property: background-color, border-color, color, fill, stroke;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+}
+
+/* 禁用按钮样式 */
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* 工具提示样式 */
+[data-tooltip] {
+    position: relative;
+}
+
+[data-tooltip]::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0.5rem;
+    background-color: #1f2937;
+    color: white;
+    border-radius: 0.375rem;
+    font-size: 0.75rem;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+    z-index: 10;
+}
+
+[data-tooltip]:hover::after {
+    opacity: 1;
+}
